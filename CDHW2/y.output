@@ -1,0 +1,2449 @@
+Terminals unused in grammar
+
+   DEF
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: programname SEMICOLON programbody END ID
+
+    2 programname: identifier
+
+    3 programbody: var_dec_list func_dec_list compound
+
+    4 functionname: identifier
+
+    5 argument: argument SEMICOLON arg_dec
+    6         | arg_dec
+    7         | %empty
+
+    8 identifier: ID
+
+    9 arg_dec: identifier_list COLON scalar_type
+
+   10 func_dec_list: func_dec_list function_dec
+   11              | %empty
+
+   12 function_dec: functionname L_PARAN argument R_PARAN return_val SEMICOLON compound END ID
+
+   13 return_val: COLON scalar_type
+   14           | %empty
+
+   15 var_dec_list: var_dec_list var_dec
+   16             | var_dec_list const_dec
+   17             | %empty
+
+   18 var_dec: VAR identifier_list COLON scalar_type SEMICOLON
+
+   19 identifier_list: identifier_list COMMA identifier
+   20                | identifier
+
+   21 const_dec: VAR identifier_list COLON literal_con SEMICOLON
+
+   22 state_list: state_list statement
+   23           | %empty
+
+   24 statement: compound
+   25          | simple
+   26          | condition
+   27          | while_loop
+   28          | for_loop
+   29          | return_state
+   30          | func_invol SEMICOLON
+
+   31 compound: BEGIN_TO var_dec_list state_list END
+
+   32 simple: var_refer ASSIGN expression SEMICOLON
+   33       | PRINT expression SEMICOLON
+   34       | READ var_refer SEMICOLON
+
+   35 condition: IF expression THEN state_list ELSE state_list END IF
+   36          | IF expression THEN state_list END IF
+
+   37 while_loop: WHILE expression DO state_list END DO
+
+   38 for_loop: FOR identifier ASSIGN INT_CON TO INT_CON DO state_list END DO
+
+   39 return_state: RETURN expression SEMICOLON
+
+   40 func_invol: functionname L_PARAN expr_list R_PARAN
+
+   41 expr_list: expr_list COMMA expression
+   42          | expression
+   43          | %empty
+
+   44 var_refer: var_refer L_BRACKED INT_CON R_BRACKED
+   45          | identifier
+
+   46 expression: expression MUL expression
+   47           | expression DIV expression
+   48           | expression MOD expression
+   49           | expression ADD expression
+   50           | expression SUB expression
+   51           | expression LT expression
+   52           | expression LE expression
+   53           | expression LG expression
+   54           | expression GE expression
+   55           | expression GT expression
+   56           | expression ET expression
+   57           | expression NOT expression
+   58           | expression AND expression
+   59           | expression OR expression
+   60           | L_PARAN expression R_PARAN
+   61           | SUB expression
+   62           | var_refer
+   63           | literal_con
+   64           | func_invol
+
+   65 scalar_type: INTERGER
+   66            | REAL
+   67            | STRING
+   68            | BOOLEAN
+   69            | ARRAY INT_CON TO INT_CON OF scalar_type
+
+   70 literal_con: INT_CON
+   71            | FLOAT_CON
+   72            | SCI_INT_CON
+   73            | STRING_CON
+   74            | TRUE
+   75            | FALSE
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+COMMA (258) 19 41
+SEMICOLON (259) 1 5 12 18 21 30 32 33 34 39
+COLON (260) 9 13 18 21
+R_PARAN (261) 12 40 60
+L_PARAN (262) 12 40 60
+L_BRACKED (263) 44
+R_BRACKED (264) 44
+NOT (265) 57
+AND (266) 58
+OR (267) 59
+LT (268) 51
+LE (269) 52
+LG (270) 53
+GE (271) 54
+GT (272) 55
+ET (273) 56
+ADD (274) 49
+SUB (275) 50 61
+MUL (276) 46
+DIV (277) 47
+MOD (278) 48
+ASSIGN (279) 32 38
+ARRAY (280) 69
+BEGIN_TO (281) 31
+BOOLEAN (282) 68
+DEF (283)
+DO (284) 37 38
+ELSE (285) 35
+END (286) 1 12 31 35 36 37 38
+FALSE (287) 75
+FOR (288) 38
+INTERGER (289) 65
+IF (290) 35 36
+OF (291) 69
+PRINT (292) 33
+READ (293) 34
+REAL (294) 66
+STRING (295) 67
+THEN (296) 35 36
+TO (297) 38 69
+TRUE (298) 74
+RETURN (299) 39
+VAR (300) 18 21
+WHILE (301) 37
+ID (302) 1 8 12
+INT_CON (303) 38 44 69 70
+FLOAT_CON (304) 71
+SCI_INT_CON (305) 72
+STRING_CON (306) 73
+
+
+Nonterminals, with rules where they appear
+
+$accept (52)
+    on left: 0
+program (53)
+    on left: 1, on right: 0
+programname (54)
+    on left: 2, on right: 1
+programbody (55)
+    on left: 3, on right: 1
+functionname (56)
+    on left: 4, on right: 12 40
+argument (57)
+    on left: 5 6 7, on right: 5 12
+identifier (58)
+    on left: 8, on right: 2 4 19 20 38 45
+arg_dec (59)
+    on left: 9, on right: 5 6
+func_dec_list (60)
+    on left: 10 11, on right: 3 10
+function_dec (61)
+    on left: 12, on right: 10
+return_val (62)
+    on left: 13 14, on right: 12
+var_dec_list (63)
+    on left: 15 16 17, on right: 3 15 16 31
+var_dec (64)
+    on left: 18, on right: 15
+identifier_list (65)
+    on left: 19 20, on right: 9 18 19 21
+const_dec (66)
+    on left: 21, on right: 16
+state_list (67)
+    on left: 22 23, on right: 22 31 35 36 37 38
+statement (68)
+    on left: 24 25 26 27 28 29 30, on right: 22
+compound (69)
+    on left: 31, on right: 3 12 24
+simple (70)
+    on left: 32 33 34, on right: 25
+condition (71)
+    on left: 35 36, on right: 26
+while_loop (72)
+    on left: 37, on right: 27
+for_loop (73)
+    on left: 38, on right: 28
+return_state (74)
+    on left: 39, on right: 29
+func_invol (75)
+    on left: 40, on right: 30 64
+expr_list (76)
+    on left: 41 42 43, on right: 40 41
+var_refer (77)
+    on left: 44 45, on right: 32 34 44 62
+expression (78)
+    on left: 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63
+    64, on right: 32 33 35 36 37 39 41 42 46 47 48 49 50 51 52 53 54
+    55 56 57 58 59 60 61
+scalar_type (79)
+    on left: 65 66 67 68 69, on right: 9 13 18 69
+literal_con (80)
+    on left: 70 71 72 73 74 75, on right: 21 63
+
+
+State 0
+
+    0 $accept: . program $end
+
+    ID  shift, and go to state 1
+
+    program      go to state 2
+    programname  go to state 3
+    identifier   go to state 4
+
+
+State 1
+
+    8 identifier: ID .
+
+    $default  reduce using rule 8 (identifier)
+
+
+State 2
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 5
+
+
+State 3
+
+    1 program: programname . SEMICOLON programbody END ID
+
+    SEMICOLON  shift, and go to state 6
+
+
+State 4
+
+    2 programname: identifier .
+
+    $default  reduce using rule 2 (programname)
+
+
+State 5
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+State 6
+
+    1 program: programname SEMICOLON . programbody END ID
+
+    $default  reduce using rule 17 (var_dec_list)
+
+    programbody   go to state 7
+    var_dec_list  go to state 8
+
+
+State 7
+
+    1 program: programname SEMICOLON programbody . END ID
+
+    END  shift, and go to state 9
+
+
+State 8
+
+    3 programbody: var_dec_list . func_dec_list compound
+   15 var_dec_list: var_dec_list . var_dec
+   16             | var_dec_list . const_dec
+
+    VAR  shift, and go to state 10
+
+    $default  reduce using rule 11 (func_dec_list)
+
+    func_dec_list  go to state 11
+    var_dec        go to state 12
+    const_dec      go to state 13
+
+
+State 9
+
+    1 program: programname SEMICOLON programbody END . ID
+
+    ID  shift, and go to state 14
+
+
+State 10
+
+   18 var_dec: VAR . identifier_list COLON scalar_type SEMICOLON
+   21 const_dec: VAR . identifier_list COLON literal_con SEMICOLON
+
+    ID  shift, and go to state 1
+
+    identifier       go to state 15
+    identifier_list  go to state 16
+
+
+State 11
+
+    3 programbody: var_dec_list func_dec_list . compound
+   10 func_dec_list: func_dec_list . function_dec
+
+    BEGIN_TO  shift, and go to state 17
+    ID        shift, and go to state 1
+
+    functionname  go to state 18
+    identifier    go to state 19
+    function_dec  go to state 20
+    compound      go to state 21
+
+
+State 12
+
+   15 var_dec_list: var_dec_list var_dec .
+
+    $default  reduce using rule 15 (var_dec_list)
+
+
+State 13
+
+   16 var_dec_list: var_dec_list const_dec .
+
+    $default  reduce using rule 16 (var_dec_list)
+
+
+State 14
+
+    1 program: programname SEMICOLON programbody END ID .
+
+    $default  reduce using rule 1 (program)
+
+
+State 15
+
+   20 identifier_list: identifier .
+
+    $default  reduce using rule 20 (identifier_list)
+
+
+State 16
+
+   18 var_dec: VAR identifier_list . COLON scalar_type SEMICOLON
+   19 identifier_list: identifier_list . COMMA identifier
+   21 const_dec: VAR identifier_list . COLON literal_con SEMICOLON
+
+    COMMA  shift, and go to state 22
+    COLON  shift, and go to state 23
+
+
+State 17
+
+   31 compound: BEGIN_TO . var_dec_list state_list END
+
+    $default  reduce using rule 17 (var_dec_list)
+
+    var_dec_list  go to state 24
+
+
+State 18
+
+   12 function_dec: functionname . L_PARAN argument R_PARAN return_val SEMICOLON compound END ID
+
+    L_PARAN  shift, and go to state 25
+
+
+State 19
+
+    4 functionname: identifier .
+
+    $default  reduce using rule 4 (functionname)
+
+
+State 20
+
+   10 func_dec_list: func_dec_list function_dec .
+
+    $default  reduce using rule 10 (func_dec_list)
+
+
+State 21
+
+    3 programbody: var_dec_list func_dec_list compound .
+
+    $default  reduce using rule 3 (programbody)
+
+
+State 22
+
+   19 identifier_list: identifier_list COMMA . identifier
+
+    ID  shift, and go to state 1
+
+    identifier  go to state 26
+
+
+State 23
+
+   18 var_dec: VAR identifier_list COLON . scalar_type SEMICOLON
+   21 const_dec: VAR identifier_list COLON . literal_con SEMICOLON
+
+    ARRAY        shift, and go to state 27
+    BOOLEAN      shift, and go to state 28
+    FALSE        shift, and go to state 29
+    INTERGER     shift, and go to state 30
+    REAL         shift, and go to state 31
+    STRING       shift, and go to state 32
+    TRUE         shift, and go to state 33
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    scalar_type  go to state 38
+    literal_con  go to state 39
+
+
+State 24
+
+   15 var_dec_list: var_dec_list . var_dec
+   16             | var_dec_list . const_dec
+   31 compound: BEGIN_TO var_dec_list . state_list END
+
+    VAR  shift, and go to state 10
+
+    $default  reduce using rule 23 (state_list)
+
+    var_dec     go to state 12
+    const_dec   go to state 13
+    state_list  go to state 40
+
+
+State 25
+
+   12 function_dec: functionname L_PARAN . argument R_PARAN return_val SEMICOLON compound END ID
+
+    ID  shift, and go to state 1
+
+    $default  reduce using rule 7 (argument)
+
+    argument         go to state 41
+    identifier       go to state 15
+    arg_dec          go to state 42
+    identifier_list  go to state 43
+
+
+State 26
+
+   19 identifier_list: identifier_list COMMA identifier .
+
+    $default  reduce using rule 19 (identifier_list)
+
+
+State 27
+
+   69 scalar_type: ARRAY . INT_CON TO INT_CON OF scalar_type
+
+    INT_CON  shift, and go to state 44
+
+
+State 28
+
+   68 scalar_type: BOOLEAN .
+
+    $default  reduce using rule 68 (scalar_type)
+
+
+State 29
+
+   75 literal_con: FALSE .
+
+    $default  reduce using rule 75 (literal_con)
+
+
+State 30
+
+   65 scalar_type: INTERGER .
+
+    $default  reduce using rule 65 (scalar_type)
+
+
+State 31
+
+   66 scalar_type: REAL .
+
+    $default  reduce using rule 66 (scalar_type)
+
+
+State 32
+
+   67 scalar_type: STRING .
+
+    $default  reduce using rule 67 (scalar_type)
+
+
+State 33
+
+   74 literal_con: TRUE .
+
+    $default  reduce using rule 74 (literal_con)
+
+
+State 34
+
+   70 literal_con: INT_CON .
+
+    $default  reduce using rule 70 (literal_con)
+
+
+State 35
+
+   71 literal_con: FLOAT_CON .
+
+    $default  reduce using rule 71 (literal_con)
+
+
+State 36
+
+   72 literal_con: SCI_INT_CON .
+
+    $default  reduce using rule 72 (literal_con)
+
+
+State 37
+
+   73 literal_con: STRING_CON .
+
+    $default  reduce using rule 73 (literal_con)
+
+
+State 38
+
+   18 var_dec: VAR identifier_list COLON scalar_type . SEMICOLON
+
+    SEMICOLON  shift, and go to state 45
+
+
+State 39
+
+   21 const_dec: VAR identifier_list COLON literal_con . SEMICOLON
+
+    SEMICOLON  shift, and go to state 46
+
+
+State 40
+
+   22 state_list: state_list . statement
+   31 compound: BEGIN_TO var_dec_list state_list . END
+
+    BEGIN_TO  shift, and go to state 17
+    END       shift, and go to state 47
+    FOR       shift, and go to state 48
+    IF        shift, and go to state 49
+    PRINT     shift, and go to state 50
+    READ      shift, and go to state 51
+    RETURN    shift, and go to state 52
+    WHILE     shift, and go to state 53
+    ID        shift, and go to state 1
+
+    functionname  go to state 54
+    identifier    go to state 55
+    statement     go to state 56
+    compound      go to state 57
+    simple        go to state 58
+    condition     go to state 59
+    while_loop    go to state 60
+    for_loop      go to state 61
+    return_state  go to state 62
+    func_invol    go to state 63
+    var_refer     go to state 64
+
+
+State 41
+
+    5 argument: argument . SEMICOLON arg_dec
+   12 function_dec: functionname L_PARAN argument . R_PARAN return_val SEMICOLON compound END ID
+
+    SEMICOLON  shift, and go to state 65
+    R_PARAN    shift, and go to state 66
+
+
+State 42
+
+    6 argument: arg_dec .
+
+    $default  reduce using rule 6 (argument)
+
+
+State 43
+
+    9 arg_dec: identifier_list . COLON scalar_type
+   19 identifier_list: identifier_list . COMMA identifier
+
+    COMMA  shift, and go to state 22
+    COLON  shift, and go to state 67
+
+
+State 44
+
+   69 scalar_type: ARRAY INT_CON . TO INT_CON OF scalar_type
+
+    TO  shift, and go to state 68
+
+
+State 45
+
+   18 var_dec: VAR identifier_list COLON scalar_type SEMICOLON .
+
+    $default  reduce using rule 18 (var_dec)
+
+
+State 46
+
+   21 const_dec: VAR identifier_list COLON literal_con SEMICOLON .
+
+    $default  reduce using rule 21 (const_dec)
+
+
+State 47
+
+   31 compound: BEGIN_TO var_dec_list state_list END .
+
+    $default  reduce using rule 31 (compound)
+
+
+State 48
+
+   38 for_loop: FOR . identifier ASSIGN INT_CON TO INT_CON DO state_list END DO
+
+    ID  shift, and go to state 1
+
+    identifier  go to state 69
+
+
+State 49
+
+   35 condition: IF . expression THEN state_list ELSE state_list END IF
+   36          | IF . expression THEN state_list END IF
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 74
+    literal_con   go to state 75
+
+
+State 50
+
+   33 simple: PRINT . expression SEMICOLON
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 76
+    literal_con   go to state 75
+
+
+State 51
+
+   34 simple: READ . var_refer SEMICOLON
+
+    ID  shift, and go to state 1
+
+    identifier  go to state 77
+    var_refer   go to state 78
+
+
+State 52
+
+   39 return_state: RETURN . expression SEMICOLON
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 79
+    literal_con   go to state 75
+
+
+State 53
+
+   37 while_loop: WHILE . expression DO state_list END DO
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 80
+    literal_con   go to state 75
+
+
+State 54
+
+   40 func_invol: functionname . L_PARAN expr_list R_PARAN
+
+    L_PARAN  shift, and go to state 81
+
+
+State 55
+
+    4 functionname: identifier .
+   45 var_refer: identifier .
+
+    L_PARAN   reduce using rule 4 (functionname)
+    $default  reduce using rule 45 (var_refer)
+
+
+State 56
+
+   22 state_list: state_list statement .
+
+    $default  reduce using rule 22 (state_list)
+
+
+State 57
+
+   24 statement: compound .
+
+    $default  reduce using rule 24 (statement)
+
+
+State 58
+
+   25 statement: simple .
+
+    $default  reduce using rule 25 (statement)
+
+
+State 59
+
+   26 statement: condition .
+
+    $default  reduce using rule 26 (statement)
+
+
+State 60
+
+   27 statement: while_loop .
+
+    $default  reduce using rule 27 (statement)
+
+
+State 61
+
+   28 statement: for_loop .
+
+    $default  reduce using rule 28 (statement)
+
+
+State 62
+
+   29 statement: return_state .
+
+    $default  reduce using rule 29 (statement)
+
+
+State 63
+
+   30 statement: func_invol . SEMICOLON
+
+    SEMICOLON  shift, and go to state 82
+
+
+State 64
+
+   32 simple: var_refer . ASSIGN expression SEMICOLON
+   44 var_refer: var_refer . L_BRACKED INT_CON R_BRACKED
+
+    L_BRACKED  shift, and go to state 83
+    ASSIGN     shift, and go to state 84
+
+
+State 65
+
+    5 argument: argument SEMICOLON . arg_dec
+
+    ID  shift, and go to state 1
+
+    identifier       go to state 15
+    arg_dec          go to state 85
+    identifier_list  go to state 43
+
+
+State 66
+
+   12 function_dec: functionname L_PARAN argument R_PARAN . return_val SEMICOLON compound END ID
+
+    COLON  shift, and go to state 86
+
+    $default  reduce using rule 14 (return_val)
+
+    return_val  go to state 87
+
+
+State 67
+
+    9 arg_dec: identifier_list COLON . scalar_type
+
+    ARRAY     shift, and go to state 27
+    BOOLEAN   shift, and go to state 28
+    INTERGER  shift, and go to state 30
+    REAL      shift, and go to state 31
+    STRING    shift, and go to state 32
+
+    scalar_type  go to state 88
+
+
+State 68
+
+   69 scalar_type: ARRAY INT_CON TO . INT_CON OF scalar_type
+
+    INT_CON  shift, and go to state 89
+
+
+State 69
+
+   38 for_loop: FOR identifier . ASSIGN INT_CON TO INT_CON DO state_list END DO
+
+    ASSIGN  shift, and go to state 90
+
+
+State 70
+
+   60 expression: L_PARAN . expression R_PARAN
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 91
+    literal_con   go to state 75
+
+
+State 71
+
+   61 expression: SUB . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 92
+    literal_con   go to state 75
+
+
+State 72
+
+   64 expression: func_invol .
+
+    $default  reduce using rule 64 (expression)
+
+
+State 73
+
+   44 var_refer: var_refer . L_BRACKED INT_CON R_BRACKED
+   62 expression: var_refer .
+
+    L_BRACKED  shift, and go to state 83
+
+    $default  reduce using rule 62 (expression)
+
+
+State 74
+
+   35 condition: IF expression . THEN state_list ELSE state_list END IF
+   36          | IF expression . THEN state_list END IF
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    NOT   shift, and go to state 93
+    AND   shift, and go to state 94
+    OR    shift, and go to state 95
+    LT    shift, and go to state 96
+    LE    shift, and go to state 97
+    LG    shift, and go to state 98
+    GE    shift, and go to state 99
+    GT    shift, and go to state 100
+    ET    shift, and go to state 101
+    ADD   shift, and go to state 102
+    SUB   shift, and go to state 103
+    MUL   shift, and go to state 104
+    DIV   shift, and go to state 105
+    MOD   shift, and go to state 106
+    THEN  shift, and go to state 107
+
+
+State 75
+
+   63 expression: literal_con .
+
+    $default  reduce using rule 63 (expression)
+
+
+State 76
+
+   33 simple: PRINT expression . SEMICOLON
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    SEMICOLON  shift, and go to state 108
+    NOT        shift, and go to state 93
+    AND        shift, and go to state 94
+    OR         shift, and go to state 95
+    LT         shift, and go to state 96
+    LE         shift, and go to state 97
+    LG         shift, and go to state 98
+    GE         shift, and go to state 99
+    GT         shift, and go to state 100
+    ET         shift, and go to state 101
+    ADD        shift, and go to state 102
+    SUB        shift, and go to state 103
+    MUL        shift, and go to state 104
+    DIV        shift, and go to state 105
+    MOD        shift, and go to state 106
+
+
+State 77
+
+   45 var_refer: identifier .
+
+    $default  reduce using rule 45 (var_refer)
+
+
+State 78
+
+   34 simple: READ var_refer . SEMICOLON
+   44 var_refer: var_refer . L_BRACKED INT_CON R_BRACKED
+
+    SEMICOLON  shift, and go to state 109
+    L_BRACKED  shift, and go to state 83
+
+
+State 79
+
+   39 return_state: RETURN expression . SEMICOLON
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    SEMICOLON  shift, and go to state 110
+    NOT        shift, and go to state 93
+    AND        shift, and go to state 94
+    OR         shift, and go to state 95
+    LT         shift, and go to state 96
+    LE         shift, and go to state 97
+    LG         shift, and go to state 98
+    GE         shift, and go to state 99
+    GT         shift, and go to state 100
+    ET         shift, and go to state 101
+    ADD        shift, and go to state 102
+    SUB        shift, and go to state 103
+    MUL        shift, and go to state 104
+    DIV        shift, and go to state 105
+    MOD        shift, and go to state 106
+
+
+State 80
+
+   37 while_loop: WHILE expression . DO state_list END DO
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    NOT  shift, and go to state 93
+    AND  shift, and go to state 94
+    OR   shift, and go to state 95
+    LT   shift, and go to state 96
+    LE   shift, and go to state 97
+    LG   shift, and go to state 98
+    GE   shift, and go to state 99
+    GT   shift, and go to state 100
+    ET   shift, and go to state 101
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+    DO   shift, and go to state 111
+
+
+State 81
+
+   40 func_invol: functionname L_PARAN . expr_list R_PARAN
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    $default  reduce using rule 43 (expr_list)
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    expr_list     go to state 112
+    var_refer     go to state 73
+    expression    go to state 113
+    literal_con   go to state 75
+
+
+State 82
+
+   30 statement: func_invol SEMICOLON .
+
+    $default  reduce using rule 30 (statement)
+
+
+State 83
+
+   44 var_refer: var_refer L_BRACKED . INT_CON R_BRACKED
+
+    INT_CON  shift, and go to state 114
+
+
+State 84
+
+   32 simple: var_refer ASSIGN . expression SEMICOLON
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 115
+    literal_con   go to state 75
+
+
+State 85
+
+    5 argument: argument SEMICOLON arg_dec .
+
+    $default  reduce using rule 5 (argument)
+
+
+State 86
+
+   13 return_val: COLON . scalar_type
+
+    ARRAY     shift, and go to state 27
+    BOOLEAN   shift, and go to state 28
+    INTERGER  shift, and go to state 30
+    REAL      shift, and go to state 31
+    STRING    shift, and go to state 32
+
+    scalar_type  go to state 116
+
+
+State 87
+
+   12 function_dec: functionname L_PARAN argument R_PARAN return_val . SEMICOLON compound END ID
+
+    SEMICOLON  shift, and go to state 117
+
+
+State 88
+
+    9 arg_dec: identifier_list COLON scalar_type .
+
+    $default  reduce using rule 9 (arg_dec)
+
+
+State 89
+
+   69 scalar_type: ARRAY INT_CON TO INT_CON . OF scalar_type
+
+    OF  shift, and go to state 118
+
+
+State 90
+
+   38 for_loop: FOR identifier ASSIGN . INT_CON TO INT_CON DO state_list END DO
+
+    INT_CON  shift, and go to state 119
+
+
+State 91
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+   60           | L_PARAN expression . R_PARAN
+
+    R_PARAN  shift, and go to state 120
+    NOT      shift, and go to state 93
+    AND      shift, and go to state 94
+    OR       shift, and go to state 95
+    LT       shift, and go to state 96
+    LE       shift, and go to state 97
+    LG       shift, and go to state 98
+    GE       shift, and go to state 99
+    GT       shift, and go to state 100
+    ET       shift, and go to state 101
+    ADD      shift, and go to state 102
+    SUB      shift, and go to state 103
+    MUL      shift, and go to state 104
+    DIV      shift, and go to state 105
+    MOD      shift, and go to state 106
+
+
+State 92
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+   61           | SUB expression .
+
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 61 (expression)
+
+
+State 93
+
+   57 expression: expression NOT . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 121
+    literal_con   go to state 75
+
+
+State 94
+
+   58 expression: expression AND . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 122
+    literal_con   go to state 75
+
+
+State 95
+
+   59 expression: expression OR . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 123
+    literal_con   go to state 75
+
+
+State 96
+
+   51 expression: expression LT . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 124
+    literal_con   go to state 75
+
+
+State 97
+
+   52 expression: expression LE . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 125
+    literal_con   go to state 75
+
+
+State 98
+
+   53 expression: expression LG . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 126
+    literal_con   go to state 75
+
+
+State 99
+
+   54 expression: expression GE . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 127
+    literal_con   go to state 75
+
+
+State 100
+
+   55 expression: expression GT . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 128
+    literal_con   go to state 75
+
+
+State 101
+
+   56 expression: expression ET . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 129
+    literal_con   go to state 75
+
+
+State 102
+
+   49 expression: expression ADD . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 130
+    literal_con   go to state 75
+
+
+State 103
+
+   50 expression: expression SUB . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 131
+    literal_con   go to state 75
+
+
+State 104
+
+   46 expression: expression MUL . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 132
+    literal_con   go to state 75
+
+
+State 105
+
+   47 expression: expression DIV . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 133
+    literal_con   go to state 75
+
+
+State 106
+
+   48 expression: expression MOD . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 134
+    literal_con   go to state 75
+
+
+State 107
+
+   35 condition: IF expression THEN . state_list ELSE state_list END IF
+   36          | IF expression THEN . state_list END IF
+
+    $default  reduce using rule 23 (state_list)
+
+    state_list  go to state 135
+
+
+State 108
+
+   33 simple: PRINT expression SEMICOLON .
+
+    $default  reduce using rule 33 (simple)
+
+
+State 109
+
+   34 simple: READ var_refer SEMICOLON .
+
+    $default  reduce using rule 34 (simple)
+
+
+State 110
+
+   39 return_state: RETURN expression SEMICOLON .
+
+    $default  reduce using rule 39 (return_state)
+
+
+State 111
+
+   37 while_loop: WHILE expression DO . state_list END DO
+
+    $default  reduce using rule 23 (state_list)
+
+    state_list  go to state 136
+
+
+State 112
+
+   40 func_invol: functionname L_PARAN expr_list . R_PARAN
+   41 expr_list: expr_list . COMMA expression
+
+    COMMA    shift, and go to state 137
+    R_PARAN  shift, and go to state 138
+
+
+State 113
+
+   42 expr_list: expression .
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    NOT  shift, and go to state 93
+    AND  shift, and go to state 94
+    OR   shift, and go to state 95
+    LT   shift, and go to state 96
+    LE   shift, and go to state 97
+    LG   shift, and go to state 98
+    GE   shift, and go to state 99
+    GT   shift, and go to state 100
+    ET   shift, and go to state 101
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 42 (expr_list)
+
+
+State 114
+
+   44 var_refer: var_refer L_BRACKED INT_CON . R_BRACKED
+
+    R_BRACKED  shift, and go to state 139
+
+
+State 115
+
+   32 simple: var_refer ASSIGN expression . SEMICOLON
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    SEMICOLON  shift, and go to state 140
+    NOT        shift, and go to state 93
+    AND        shift, and go to state 94
+    OR         shift, and go to state 95
+    LT         shift, and go to state 96
+    LE         shift, and go to state 97
+    LG         shift, and go to state 98
+    GE         shift, and go to state 99
+    GT         shift, and go to state 100
+    ET         shift, and go to state 101
+    ADD        shift, and go to state 102
+    SUB        shift, and go to state 103
+    MUL        shift, and go to state 104
+    DIV        shift, and go to state 105
+    MOD        shift, and go to state 106
+
+
+State 116
+
+   13 return_val: COLON scalar_type .
+
+    $default  reduce using rule 13 (return_val)
+
+
+State 117
+
+   12 function_dec: functionname L_PARAN argument R_PARAN return_val SEMICOLON . compound END ID
+
+    BEGIN_TO  shift, and go to state 17
+
+    compound  go to state 141
+
+
+State 118
+
+   69 scalar_type: ARRAY INT_CON TO INT_CON OF . scalar_type
+
+    ARRAY     shift, and go to state 27
+    BOOLEAN   shift, and go to state 28
+    INTERGER  shift, and go to state 30
+    REAL      shift, and go to state 31
+    STRING    shift, and go to state 32
+
+    scalar_type  go to state 142
+
+
+State 119
+
+   38 for_loop: FOR identifier ASSIGN INT_CON . TO INT_CON DO state_list END DO
+
+    TO  shift, and go to state 143
+
+
+State 120
+
+   60 expression: L_PARAN expression R_PARAN .
+
+    $default  reduce using rule 60 (expression)
+
+
+State 121
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   57           | expression NOT expression .
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    AND  shift, and go to state 94
+    OR   shift, and go to state 95
+    LT   shift, and go to state 96
+    LE   shift, and go to state 97
+    LG   shift, and go to state 98
+    GE   shift, and go to state 99
+    GT   shift, and go to state 100
+    ET   shift, and go to state 101
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 57 (expression)
+
+
+State 122
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   58           | expression AND expression .
+   59           | expression . OR expression
+
+    OR   shift, and go to state 95
+    LT   shift, and go to state 96
+    LE   shift, and go to state 97
+    LG   shift, and go to state 98
+    GE   shift, and go to state 99
+    GT   shift, and go to state 100
+    ET   shift, and go to state 101
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 58 (expression)
+
+
+State 123
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+   59           | expression OR expression .
+
+    LT   shift, and go to state 96
+    LE   shift, and go to state 97
+    LG   shift, and go to state 98
+    GE   shift, and go to state 99
+    GT   shift, and go to state 100
+    ET   shift, and go to state 101
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 59 (expression)
+
+
+State 124
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   51           | expression LT expression .
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 51 (expression)
+
+
+State 125
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   52           | expression LE expression .
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 52 (expression)
+
+
+State 126
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   53           | expression LG expression .
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 53 (expression)
+
+
+State 127
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   54           | expression GE expression .
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 54 (expression)
+
+
+State 128
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   55           | expression GT expression .
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 55 (expression)
+
+
+State 129
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   56           | expression ET expression .
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 56 (expression)
+
+
+State 130
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   49           | expression ADD expression .
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 49 (expression)
+
+
+State 131
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   50           | expression SUB expression .
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 50 (expression)
+
+
+State 132
+
+   46 expression: expression . MUL expression
+   46           | expression MUL expression .
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    $default  reduce using rule 46 (expression)
+
+
+State 133
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   47           | expression DIV expression .
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    $default  reduce using rule 47 (expression)
+
+
+State 134
+
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   48           | expression MOD expression .
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    $default  reduce using rule 48 (expression)
+
+
+State 135
+
+   22 state_list: state_list . statement
+   35 condition: IF expression THEN state_list . ELSE state_list END IF
+   36          | IF expression THEN state_list . END IF
+
+    BEGIN_TO  shift, and go to state 17
+    ELSE      shift, and go to state 144
+    END       shift, and go to state 145
+    FOR       shift, and go to state 48
+    IF        shift, and go to state 49
+    PRINT     shift, and go to state 50
+    READ      shift, and go to state 51
+    RETURN    shift, and go to state 52
+    WHILE     shift, and go to state 53
+    ID        shift, and go to state 1
+
+    functionname  go to state 54
+    identifier    go to state 55
+    statement     go to state 56
+    compound      go to state 57
+    simple        go to state 58
+    condition     go to state 59
+    while_loop    go to state 60
+    for_loop      go to state 61
+    return_state  go to state 62
+    func_invol    go to state 63
+    var_refer     go to state 64
+
+
+State 136
+
+   22 state_list: state_list . statement
+   37 while_loop: WHILE expression DO state_list . END DO
+
+    BEGIN_TO  shift, and go to state 17
+    END       shift, and go to state 146
+    FOR       shift, and go to state 48
+    IF        shift, and go to state 49
+    PRINT     shift, and go to state 50
+    READ      shift, and go to state 51
+    RETURN    shift, and go to state 52
+    WHILE     shift, and go to state 53
+    ID        shift, and go to state 1
+
+    functionname  go to state 54
+    identifier    go to state 55
+    statement     go to state 56
+    compound      go to state 57
+    simple        go to state 58
+    condition     go to state 59
+    while_loop    go to state 60
+    for_loop      go to state 61
+    return_state  go to state 62
+    func_invol    go to state 63
+    var_refer     go to state 64
+
+
+State 137
+
+   41 expr_list: expr_list COMMA . expression
+
+    L_PARAN      shift, and go to state 70
+    SUB          shift, and go to state 71
+    FALSE        shift, and go to state 29
+    TRUE         shift, and go to state 33
+    ID           shift, and go to state 1
+    INT_CON      shift, and go to state 34
+    FLOAT_CON    shift, and go to state 35
+    SCI_INT_CON  shift, and go to state 36
+    STRING_CON   shift, and go to state 37
+
+    functionname  go to state 54
+    identifier    go to state 55
+    func_invol    go to state 72
+    var_refer     go to state 73
+    expression    go to state 147
+    literal_con   go to state 75
+
+
+State 138
+
+   40 func_invol: functionname L_PARAN expr_list R_PARAN .
+
+    $default  reduce using rule 40 (func_invol)
+
+
+State 139
+
+   44 var_refer: var_refer L_BRACKED INT_CON R_BRACKED .
+
+    $default  reduce using rule 44 (var_refer)
+
+
+State 140
+
+   32 simple: var_refer ASSIGN expression SEMICOLON .
+
+    $default  reduce using rule 32 (simple)
+
+
+State 141
+
+   12 function_dec: functionname L_PARAN argument R_PARAN return_val SEMICOLON compound . END ID
+
+    END  shift, and go to state 148
+
+
+State 142
+
+   69 scalar_type: ARRAY INT_CON TO INT_CON OF scalar_type .
+
+    $default  reduce using rule 69 (scalar_type)
+
+
+State 143
+
+   38 for_loop: FOR identifier ASSIGN INT_CON TO . INT_CON DO state_list END DO
+
+    INT_CON  shift, and go to state 149
+
+
+State 144
+
+   35 condition: IF expression THEN state_list ELSE . state_list END IF
+
+    $default  reduce using rule 23 (state_list)
+
+    state_list  go to state 150
+
+
+State 145
+
+   36 condition: IF expression THEN state_list END . IF
+
+    IF  shift, and go to state 151
+
+
+State 146
+
+   37 while_loop: WHILE expression DO state_list END . DO
+
+    DO  shift, and go to state 152
+
+
+State 147
+
+   41 expr_list: expr_list COMMA expression .
+   46 expression: expression . MUL expression
+   47           | expression . DIV expression
+   48           | expression . MOD expression
+   49           | expression . ADD expression
+   50           | expression . SUB expression
+   51           | expression . LT expression
+   52           | expression . LE expression
+   53           | expression . LG expression
+   54           | expression . GE expression
+   55           | expression . GT expression
+   56           | expression . ET expression
+   57           | expression . NOT expression
+   58           | expression . AND expression
+   59           | expression . OR expression
+
+    NOT  shift, and go to state 93
+    AND  shift, and go to state 94
+    OR   shift, and go to state 95
+    LT   shift, and go to state 96
+    LE   shift, and go to state 97
+    LG   shift, and go to state 98
+    GE   shift, and go to state 99
+    GT   shift, and go to state 100
+    ET   shift, and go to state 101
+    ADD  shift, and go to state 102
+    SUB  shift, and go to state 103
+    MUL  shift, and go to state 104
+    DIV  shift, and go to state 105
+    MOD  shift, and go to state 106
+
+    $default  reduce using rule 41 (expr_list)
+
+
+State 148
+
+   12 function_dec: functionname L_PARAN argument R_PARAN return_val SEMICOLON compound END . ID
+
+    ID  shift, and go to state 153
+
+
+State 149
+
+   38 for_loop: FOR identifier ASSIGN INT_CON TO INT_CON . DO state_list END DO
+
+    DO  shift, and go to state 154
+
+
+State 150
+
+   22 state_list: state_list . statement
+   35 condition: IF expression THEN state_list ELSE state_list . END IF
+
+    BEGIN_TO  shift, and go to state 17
+    END       shift, and go to state 155
+    FOR       shift, and go to state 48
+    IF        shift, and go to state 49
+    PRINT     shift, and go to state 50
+    READ      shift, and go to state 51
+    RETURN    shift, and go to state 52
+    WHILE     shift, and go to state 53
+    ID        shift, and go to state 1
+
+    functionname  go to state 54
+    identifier    go to state 55
+    statement     go to state 56
+    compound      go to state 57
+    simple        go to state 58
+    condition     go to state 59
+    while_loop    go to state 60
+    for_loop      go to state 61
+    return_state  go to state 62
+    func_invol    go to state 63
+    var_refer     go to state 64
+
+
+State 151
+
+   36 condition: IF expression THEN state_list END IF .
+
+    $default  reduce using rule 36 (condition)
+
+
+State 152
+
+   37 while_loop: WHILE expression DO state_list END DO .
+
+    $default  reduce using rule 37 (while_loop)
+
+
+State 153
+
+   12 function_dec: functionname L_PARAN argument R_PARAN return_val SEMICOLON compound END ID .
+
+    $default  reduce using rule 12 (function_dec)
+
+
+State 154
+
+   38 for_loop: FOR identifier ASSIGN INT_CON TO INT_CON DO . state_list END DO
+
+    $default  reduce using rule 23 (state_list)
+
+    state_list  go to state 156
+
+
+State 155
+
+   35 condition: IF expression THEN state_list ELSE state_list END . IF
+
+    IF  shift, and go to state 157
+
+
+State 156
+
+   22 state_list: state_list . statement
+   38 for_loop: FOR identifier ASSIGN INT_CON TO INT_CON DO state_list . END DO
+
+    BEGIN_TO  shift, and go to state 17
+    END       shift, and go to state 158
+    FOR       shift, and go to state 48
+    IF        shift, and go to state 49
+    PRINT     shift, and go to state 50
+    READ      shift, and go to state 51
+    RETURN    shift, and go to state 52
+    WHILE     shift, and go to state 53
+    ID        shift, and go to state 1
+
+    functionname  go to state 54
+    identifier    go to state 55
+    statement     go to state 56
+    compound      go to state 57
+    simple        go to state 58
+    condition     go to state 59
+    while_loop    go to state 60
+    for_loop      go to state 61
+    return_state  go to state 62
+    func_invol    go to state 63
+    var_refer     go to state 64
+
+
+State 157
+
+   35 condition: IF expression THEN state_list ELSE state_list END IF .
+
+    $default  reduce using rule 35 (condition)
+
+
+State 158
+
+   38 for_loop: FOR identifier ASSIGN INT_CON TO INT_CON DO state_list END . DO
+
+    DO  shift, and go to state 159
+
+
+State 159
+
+   38 for_loop: FOR identifier ASSIGN INT_CON TO INT_CON DO state_list END DO .
+
+    $default  reduce using rule 38 (for_loop)

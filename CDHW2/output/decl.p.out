@@ -1,0 +1,116 @@
+1: /**
+2:  * decl.p: declarations
+3:  */
+<id: decl>
+<;>
+<KWvar>
+<id: ga>
+<:>
+<KWinteger>
+<;>
+<KWvar>
+<id: gb>
+<,>
+<id: gc>
+<:>
+<KWboolean>
+<;>
+<KWvar>
+<id: gd>
+<:>
+<KWreal>
+<;>
+<KWvar>
+<id: ge>
+<:>
+<KWstring>
+<;>
+<KWvar>
+<id: garray>
+<:>
+<KWarray>
+<integer: 1>
+<KWto>
+<integer: 10>
+<KWof>
+<KWinteger>
+<;>
+<KWvar>
+<id: PI>
+<:>
+<float: 3.1415926>
+<;>
+<KWvar>
+<id: course>
+<:>
+<string: Introduction to Compiler Design>
+<;>
+<KWvar>
+<id: isPass>
+<:>
+<KWtrue>
+<;>
+<KWbegin>
+<KWvar>
+<id: arraySize>
+<:>
+<integer: 1024>
+<;>
+<KWvar>
+<id: la>
+<:>
+<KWinteger>
+<;>
+<KWvar>
+<id: lb>
+<,>
+<id: lc>
+<,>
+<id: ld>
+<:>
+<KWboolean>
+<;>
+<KWvar>
+<id: le>
+<,>
+<id: lf>
+<:>
+<KWreal>
+<;>
+<KWvar>
+<id: lg>
+<:>
+<KWstring>
+<;>
+<KWvar>
+<id: L1darray>
+<:>
+<KWarray>
+<integer: 1>
+<KWto>
+<integer: 5>
+<KWof>
+<KWinteger>
+<;>
+<KWvar>
+<id: L2darray>
+<:>
+<KWarray>
+<integer: 1>
+<KWto>
+<integer: 5>
+<KWof>
+<KWarray>
+<integer: 1>
+<KWto>
+<integer: 3>
+<KWof>
+<KWinteger>
+<;>
+<KWend>
+<KWend>
+<id: decl>
+
+|--------------------------------|
+|  There is no syntactic error!  |
+|--------------------------------|

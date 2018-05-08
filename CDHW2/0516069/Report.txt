@@ -1,0 +1,30 @@
+# NCTU-Compiler-s18_Project_2_Yacc
+
+
+## Abilites
+- parse string into token defined by spec in HW1.
+- parse token with a LALR(1) grammar to do syntax analyze.
+- output source code with line number if Opt_S is on.
+- output token if Opt_T is on.
+- Print out the unacceptable token in he console and stop program.
+
+
+## Platform
+- linux with flex, yacc and gcc compiler.
+- Worked in linux.cs.nctu.tw work-station.
+
+
+## How to run parser
+- tpye 'make' in directory with Makefile.
+  
+  `code...
+    ./0516069> make
+  `...
+
+- lex.l, parser.y should be in the same directory with Makefile.
+- read input file as an argument while executing ./parser.
+
+-------------------------------------------------------------------
+Signature  : 翁英傑
+Student_ID : 0516069
+-------------------------------------------------------------------
