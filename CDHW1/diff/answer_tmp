@@ -1,0 +1,62 @@
+1: // pattern name: general_2
+2: 
+3: /*
+4:  *	A P language example
+5:  */
+<id: general2>
+<;>
+6: general2;
+7: 
+<KWvar>
+<id: a>
+<:>
+<KWinteger>
+<;>
+8: var a: integer;		// global variable
+9: 
+<id: foo>
+<(>
+<id: a>
+<,>
+<id: b>
+<:>
+<KWinteger>
+<)>
+<:>
+<KWinteger>
+<;>
+10: foo( a, b: integer ): integer;
+<KWbegin>
+11: begin
+<KWreturn>
+<id: a>
+<*>
+<id: b>
+<;>
+12: 	return a*b;
+<KWend>
+13: end
+<KWend>
+<id: foo>
+14: end foo
+15: 
+16: // main block
+<KWbegin>
+17: begin
+18: 
+<KWprint>
+<id: foo>
+<(>
+<integer: 2>
+<,>
+<integer: 3>
+<)>
+<;>
+19: 	print foo(2,3);
+20: 
+<KWend>
+21: end
+<KWend>
+<id: general2>
+22: end general2
+23: 

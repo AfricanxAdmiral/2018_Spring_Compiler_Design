@@ -1,0 +1,13 @@
+1: //pattern name: octal
+2: 
+<oct_integer: 0123>
+3: 0123
+4: 
+<oct_integer: 00123>
+5: 00123
+6: 
+<oct_integer: 0001230>
+7: 0001230
+8: 
+<oct_integer: 01010101>
+9: 01010101

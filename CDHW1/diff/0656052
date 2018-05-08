@@ -1,0 +1,166 @@
+--- answer
++++ student
+Test file: ./2010pattern/advanced/comment.p
+Test file: ./2010pattern/advanced/pseudo_optS.p
+Test file: ./2010pattern/advanced/pseudo_optT.p
+Test file: ./2010pattern/advanced/string_error2.p
+--- result_cancate_diff/answer_tmp	2018-03-31 14:05:31.078285000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 14:05:31.076279000 +0800
+@@ -1,5 +1,6 @@
+ 1: // pattern name: string_error2
+ 2: 
+ <string: >
+ <=>
+-error at line 3: bad character """
++error at line 3: bad character "
++"
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/advanced/string_error3.p
+--- result_cancate_diff/answer_tmp	2018-03-31 14:05:31.089277000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 14:05:31.086285000 +0800
+@@ -1,4 +1,4 @@
+ 1: // pattern name: string_error3
+ 2: 
+-<string: >
+-error at line 3: bad character """
++error at line 3: bad character "
++"
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/advanced/string_error.p
+--- result_cancate_diff/answer_tmp	2018-03-31 14:05:31.099280000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 14:05:31.096289000 +0800
+@@ -1,5 +1,5 @@
+ 1: // pattern name: string_error
+ 2: 
+ 3: // embedded newline error
+-<string:  =>
+-error at line 4: bad character """
++error at line 4: bad character "
++"
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/advanced/string.p
+Test file: ./2010pattern/basic/delim.p
+Test file: ./2010pattern/basic/identifier.p
+Test file: ./2010pattern/basic/keyword.p
+Test file: ./2010pattern/basic/op.p
+Test file: ./2010pattern/digit/float_error1.p
+Test file: ./2010pattern/digit/float_error2.p
+Test file: ./2010pattern/digit/float_error3.p
+Test file: ./2010pattern/digit/float_error4.p
+Test file: ./2010pattern/digit/float.p
+--- result_cancate_diff/answer_tmp	2018-03-31 14:05:31.177287000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 14:05:31.174289000 +0800
+@@ -1,19 +1,32 @@
+ 1: // pattern name: float
+ 2: 
+ <float: 123.45>
+ 3: 123.45
+ 4: 
+ <float: 123.456>
+ 5: 123.456
+ 6: 
+ <float: 45.678901>
+ 7: 45.678901
+ 8: 
+ <float: 123.0>
+ 9: 123.0
+ 10: 
+ <float: 0.123>
+ 11: 0.123
+ 12: 
+-<oct_integer: 00>
+-error at line 13: bad character "."
++<float: 00.123>
++13: 00.123	// int:0 float:0.123
++14: 
++<float: 123.0000>
++15: 123.0000	// float:123.0 int:0 int:0 int:0
++16: 
++<float: 123.00001>
++17: 123.00001	// float:123.00001
++18: 
++<float: 123.450>
++19: 123.450		// float:123.45 int:0
++20: 
++<float: 0.0>
++21: 0.0		// float:0.0
++22: 
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/digit/integer.p
+Test file: ./2010pattern/digit/scientific_error2.p
+Test file: ./2010pattern/digit/scientific_error.p
+Test file: ./2010pattern/digit/scientific.p
+--- result_cancate_diff/answer_tmp	2018-03-31 14:05:31.214286000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 14:05:31.212281000 +0800
+@@ -1,39 +1,47 @@
+ 1: // pattern name: scientific
+ <oct_integer: 007>
+ 2: 007
+ 3: 
+ <scientific: 369E2>
+ 4: 369E2
+ 5: 
+ <scientific: 125e2>
+ 6: 125e2
+ 7: 
+ <scientific: 123E+4>
+ 8: 123E+4
+ 9: 
+ <scientific: 135E-6>
+ 10: 135E-6
+ 11: 
+ <scientific: 147E0>
+ 12: 147E0
+ 13: 
+ <scientific: 147e-1>
+ 14: 147e-1
+ 15: 
+ <scientific: 1.23E2>
+ 16: 1.23E2
+ 17: 
+ <scientific: 2.345E-1>
+ 18: 2.345E-1
+ 19: 
+ <scientific: 25.01E2>
+ 20: 25.01E2
+ 21: 
+-<scientific: 123E0>
+-<integer: 1>
++<scientific: 123E01>
+ 22: 123E01		// scientific: 123E0 ; int: 1
+-<scientific: 123e0>
+-<oct_integer: 00>
++<scientific: 123e000>
+ 23: 123e000		// scientific:1 23e0 ; int: 0 ; int: 0
+-<oct_integer: 00>
+-error at line 24: bad character "."
++<scientific: 00.1E5>
++24: 00.1E5		// int: 0 ; scientific: 0.1E5
++25: 
++<scientific: 768e5>
++<id: e3>
++26: 768e5e3		// scientific: 768e5 ; id: e3
++<integer: 123>
++<id: e>
++<+>
++<id: abC>
++27: 123e+abC	// int: 123 ; id: e ; op: + ; id: abC
++28: 
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/error_case/error2.p
+Test file: ./2010pattern/error_case/error3.p
+Test file: ./2010pattern/error_case/error4.p
+Test file: ./2010pattern/error_case/error5.p
+Test file: ./2010pattern/error_case/error.p
+Test file: ./2010pattern/general/general_1.p
+Test file: ./2010pattern/general/general_2.p

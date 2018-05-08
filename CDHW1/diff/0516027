@@ -1,0 +1,101 @@
+--- answer
++++ student
+Test file: ./2010pattern/advanced/comment.p
+Test file: ./2010pattern/advanced/pseudo_optS.p
+Test file: ./2010pattern/advanced/pseudo_optT.p
+Test file: ./2010pattern/advanced/string_error2.p
+Test file: ./2010pattern/advanced/string_error3.p
+Test file: ./2010pattern/advanced/string_error.p
+Test file: ./2010pattern/advanced/string.p
+Test file: ./2010pattern/basic/delim.p
+Test file: ./2010pattern/basic/identifier.p
+Test file: ./2010pattern/basic/keyword.p
+Test file: ./2010pattern/basic/op.p
+Test file: ./2010pattern/digit/float_error1.p
+Test file: ./2010pattern/digit/float_error2.p
+Test file: ./2010pattern/digit/float_error3.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:55:07.270954000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:55:07.268952000 +0800
+@@ -1,4 +1,5 @@
+ 1: // pattern name: float_error3
+ 2: 
+-<integer: 0>
+-error at line 3: bad character "."
++<float: 0.>
++3: 0.
++4: 
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/digit/float_error4.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:55:07.280954000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:55:07.277953000 +0800
+@@ -1,4 +1,4 @@
+ 1: // pattern name: float_error4
+ 2: 
+-<integer: 1203>
+-error at line 3: bad character "."
++<float: 1203.>
++3: 1203.
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/digit/float.p
+Test file: ./2010pattern/digit/integer.p
+Test file: ./2010pattern/digit/scientific_error2.p
+Test file: ./2010pattern/digit/scientific_error.p
+Test file: ./2010pattern/digit/scientific.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:55:07.319950000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:55:07.316951000 +0800
+@@ -1,39 +1,37 @@
+ 1: // pattern name: scientific
+ <oct_integer: 007>
+ 2: 007
+ 3: 
+ <scientific: 369E2>
+ 4: 369E2
+ 5: 
+ <scientific: 125e2>
+ 6: 125e2
+ 7: 
+ <scientific: 123E+4>
+ 8: 123E+4
+ 9: 
+ <scientific: 135E-6>
+ 10: 135E-6
+ 11: 
+ <scientific: 147E0>
+ 12: 147E0
+ 13: 
+ <scientific: 147e-1>
+ 14: 147e-1
+ 15: 
+ <scientific: 1.23E2>
+ 16: 1.23E2
+ 17: 
+ <scientific: 2.345E-1>
+ 18: 2.345E-1
+ 19: 
+ <scientific: 25.01E2>
+ 20: 25.01E2
+ 21: 
+-<scientific: 123E0>
+-<integer: 1>
++<scientific: 123E01>
+ 22: 123E01		// scientific: 123E0 ; int: 1
+-<scientific: 123e0>
+-<oct_integer: 00>
++<scientific: 123e000>
+ 23: 123e000		// scientific:1 23e0 ; int: 0 ; int: 0
+ <oct_integer: 00>
+ error at line 24: bad character "."
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/error_case/error2.p
+Test file: ./2010pattern/error_case/error3.p
+Test file: ./2010pattern/error_case/error4.p
+Test file: ./2010pattern/error_case/error5.p
+Test file: ./2010pattern/error_case/error.p
+Test file: ./2010pattern/general/general_1.p
+Test file: ./2010pattern/general/general_2.p

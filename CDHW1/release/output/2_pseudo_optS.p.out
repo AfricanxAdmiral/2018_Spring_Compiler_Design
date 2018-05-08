@@ -1,0 +1,22 @@
+1: //&S+       // open
+2: 
+<id: int>
+<id: a>
+<;>
+3: int a;
+4: /* hi */
+5: 
+<KWinteger>
+<id: abcdefg>
+<;>
+<KWstring>
+<id: s>
+<:=>
+<string:  array >
+<;>
+10: //&S+     // open
+11: /* this is a comment */
+<KWinteger>
+<id: a1>
+<;>
+12: integer a1;

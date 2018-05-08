@@ -1,0 +1,18 @@
+1: //&T+       // open
+2: 
+<id: int>
+<id: a>
+<;>
+3: int a;
+4: /* hi */
+5: 
+6: //&T-       // close
+7: integer abcdefg;
+8: string s :=" array ";
+9: 
+10: //&T+     // open
+11: /* this is a comment */
+<KWinteger>
+<id: a1>
+<;>
+12: integer a1;

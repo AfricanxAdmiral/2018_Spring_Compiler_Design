@@ -1,0 +1,7 @@
+1: /*   this is a multiple line C-style comment
+2:       hi \n   
+3: 	\n
+4: \t   1234
+5:    array   begin  end
+6:    123E-1
+7: */

@@ -1,0 +1,34 @@
+1: // pattern name: keyword
+2: 
+<KWarray>
+3: array
+<KWbegin>
+<KWboolean>
+4: begin boolean
+<KWdef>
+<KWdo>
+<KWelse>
+5: def do else
+<KWend>
+<KWfalse>
+<KWfor>
+<KWinteger>
+6: end false for integer
+<KWif>
+<KWof>
+7: if of
+<KWprint>
+<KWread>
+<KWreal>
+<KWstring>
+8: print read real string 
+<KWthen>
+<KWto>
+<KWtrue>
+9: then to true
+<KWreturn>
+<KWvar>
+10: return var
+<KWwhile>
+11: while
+12: 

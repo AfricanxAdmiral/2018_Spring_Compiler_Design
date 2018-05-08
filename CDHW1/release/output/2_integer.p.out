@@ -1,0 +1,14 @@
+1: // pattern name: integer
+2: 
+<integer: 0>
+3: 0
+4: 
+<integer: 123>
+5: 123
+6: 
+<integer: 12300>
+7: 12300
+8: 
+<integer: 10101010>
+9: 10101010
+10: 

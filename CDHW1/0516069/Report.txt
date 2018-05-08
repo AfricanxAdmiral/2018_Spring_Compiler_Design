@@ -1,0 +1,28 @@
+# NCTU-Compiler-s18_Project_1_Lex
+
+
+## Abilites
+- parse string into token defined by spec.
+- print out token type and content.
+- ouput source code with line number.
+
+
+## Platform
+- linux with flex and gcc compiler.
+- Worked in linux.cs.nctu.tw work-station.
+
+
+## How to run scanner
+- tpye make in directory with Makefile.
+  
+  `code...
+    ./0516069> make
+  `...
+
+- lex_0516069.l should be in the same directory with Makefile.
+- read input file as an argument while executing ./scanner.
+
+-------------------------------------------------------------------
+Signature  : 翁英傑
+Student_ID : 0516069
+-------------------------------------------------------------------

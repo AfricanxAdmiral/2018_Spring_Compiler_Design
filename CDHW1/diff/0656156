@@ -1,0 +1,213 @@
+--- answer
++++ student
+Test file: ./2010pattern/advanced/comment.p
+Test file: ./2010pattern/advanced/pseudo_optS.p
+--- result_cancate_diff/answer_tmp	2018-03-31 14:15:56.007656000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 14:15:56.004654000 +0800
+@@ -1,65 +1,38 @@
+ 1: // pattern name: pseudo_optS
+ 2: 
+ 3: //&S+       // open
+ 4: 
+ <id: int>
+ <id: a>
+ <;>
+ 5: int a;
+ 6: /* hi */
+ 7: 
+ <KWinteger>
+ <id: abcdefg>
+ <;>
+ <KWstring>
+ <id: s>
+ <:=>
+ <string:  array >
+ <;>
+ 12: //&S+     // open
+ 13: /* this is a comment */
+ <KWinteger>
+ <id: a1>
+ <;>
+ 14: integer a1;
+ 15: 
+ 16: /*
+-17: //&S-   // should not close
+-18: */
+-19: 
+-20: ///////////&S-		// not pseudo comment
+-21: 
+-22: //$s-
+-23: 
+-24: // comment 
+-25: 
+-29: //&S+   // open
+-<KWinteger>
+-<id: x>
+-<;>
+-30: integer x;
+-31: // &S-  // comment
+-<KWinteger>
+-<id: x>
+-<;>
+-32: integer x;
+-33: 
+-<KWstring>
+-<:=>
+-<string:  //&S- >
+-<;>
+-34: string:= " //&S- ";  // not close
+-<KWinteger>
+-<id: c>
+-<;>
+-35: integer c;
+-36: 
+-<id: abc>
+-<KWdef>
+-40: //&S+
+-<id: bye>
+-41: bye
+-<KWinteger>
+-42: integer
+-43: 
+-<string: hello>
++</>
++</>
++</>
++</>
++</>
++</>
++</>
++</>
++</>
++</>
++</>
++error at line 20: bad character "&"
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/advanced/pseudo_optT.p
+--- result_cancate_diff/answer_tmp	2018-03-31 14:15:56.025650000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 14:15:56.022652000 +0800
+@@ -1,67 +1,26 @@
+ 1: // pattern name: pseudo_optT
+ 2: 
+ 3: //&T+       // open
+ 4: 
+ <id: int>
+ <id: a>
+ <;>
+ 5: int a;
+ 6: /* hi */
+ 7: 
+ 8: //&T-       // close
+ 9: integer abcdefg;
+ 10: string s :=" array ";
+ 11: 
+ 12: //&T+     // open
+ 13: /* this is a comment */
+ <KWinteger>
+ <id: a1>
+ <;>
+ 14: integer a1;
+ 15: 
+ 16: /*
+ 17: //&T-   // should not close
+ 18: */
+ 19: 
+-20: ///////////&T-		// not pseudo comment
+-21: 
+-22: //$t-
+-23: 
+-24: // comment 
+-25: 
+-26: //&T-&T+   // close
+-27: //12345
+-28: 
+-29: //&T+   // open
+-<KWinteger>
+-<id: x>
+-<;>
+-30: integer x;
+-31: // &T-  // comment
+-<KWinteger>
+-<id: x>
+-<;>
+-32: integer x;
+-33: 
+-<KWstring>
+-<:=>
+-<string:  //&T- >
+-<;>
+-34: string:= " //&T- ";  // not close
+-<KWinteger>
+-<id: c>
+-<;>
+-35: integer c;
+-36: 
+-37: //&T-&S-
+-38: abc
+-39: def
+-40: //&T+
+-<id: bye>
+-41: bye
+-<KWinteger>
+-42: integer
+-43: 
+-44: /*hello*///&T-
+-45: "hello"
+-46: 
++error at line 20: bad character "&"
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/advanced/string_error2.p
+Test file: ./2010pattern/advanced/string_error3.p
+--- result_cancate_diff/answer_tmp	2018-03-31 14:15:56.047653000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 14:15:56.045650000 +0800
+@@ -1,4 +1,5 @@
+ 1: // pattern name: string_error3
+ 2: 
+-<string: >
+-error at line 3: bad character """
++<string: ">
++3: """		// empty string ; newline error
++4: 
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/advanced/string_error.p
+--- result_cancate_diff/answer_tmp	2018-03-31 14:15:56.060650000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 14:15:56.057653000 +0800
+@@ -1,5 +1,6 @@
+ 1: // pattern name: string_error
+ 2: 
+ 3: // embedded newline error
+-<string:  =>
+-error at line 4: bad character """
++<string:  =">
++4: " =""
++5: 
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/advanced/string.p
+Test file: ./2010pattern/basic/delim.p
+Test file: ./2010pattern/basic/identifier.p
+Test file: ./2010pattern/basic/keyword.p
+Test file: ./2010pattern/basic/op.p
+Test file: ./2010pattern/digit/float_error1.p
+Test file: ./2010pattern/digit/float_error2.p
+Test file: ./2010pattern/digit/float_error3.p
+Test file: ./2010pattern/digit/float_error4.p
+Test file: ./2010pattern/digit/float.p
+Test file: ./2010pattern/digit/integer.p
+Test file: ./2010pattern/digit/scientific_error2.p
+Test file: ./2010pattern/digit/scientific_error.p
+Test file: ./2010pattern/digit/scientific.p
+Test file: ./2010pattern/error_case/error2.p
+Test file: ./2010pattern/error_case/error3.p
+Test file: ./2010pattern/error_case/error4.p
+Test file: ./2010pattern/error_case/error5.p
+Test file: ./2010pattern/error_case/error.p
+Test file: ./2010pattern/general/general_1.p
+Test file: ./2010pattern/general/general_2.p

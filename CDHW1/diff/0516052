@@ -1,0 +1,457 @@
+--- answer
++++ student
+Test file: ./2010pattern/advanced/comment.p
+Test file: ./2010pattern/advanced/pseudo_optS.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:56:11.650472000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:56:11.647476000 +0800
+@@ -1,65 +1,53 @@
+ 1: // pattern name: pseudo_optS
+ 2: 
+ 3: //&S+       // open
+ 4: 
+ <id: int>
+ <id: a>
+ <;>
+ 5: int a;
+ 6: /* hi */
+ 7: 
+ <KWinteger>
+ <id: abcdefg>
+ <;>
+ <KWstring>
+ <id: s>
+ <:=>
+ <string:  array >
+ <;>
+ 12: //&S+     // open
+ 13: /* this is a comment */
+ <KWinteger>
+ <id: a1>
+ <;>
+ 14: integer a1;
+ 15: 
+ 16: /*
+ 17: //&S-   // should not close
+ 18: */
+ 19: 
+-20: ///////////&S-		// not pseudo comment
+-21: 
+-22: //$s-
+-23: 
+-24: // comment 
+-25: 
+ 29: //&S+   // open
+ <KWinteger>
+ <id: x>
+ <;>
+ 30: integer x;
+-31: // &S-  // comment
+ <KWinteger>
+ <id: x>
+ <;>
+-32: integer x;
+-33: 
+ <KWstring>
+ <:=>
+ <string:  //&S- >
+ <;>
+-34: string:= " //&S- ";  // not close
+ <KWinteger>
+ <id: c>
+ <;>
+-35: integer c;
+-36: 
+ <id: abc>
+ <KWdef>
+ 40: //&S+
+ <id: bye>
+ 41: bye
+ <KWinteger>
+ 42: integer
+ 43: 
+ <string: hello>
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/advanced/pseudo_optT.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:56:11.660474000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:56:11.657480000 +0800
+@@ -1,67 +1,57 @@
+ 1: // pattern name: pseudo_optT
+ 2: 
+ 3: //&T+       // open
+ 4: 
+ <id: int>
+ <id: a>
+ <;>
+ 5: int a;
+ 6: /* hi */
+ 7: 
+ 8: //&T-       // close
+ 9: integer abcdefg;
+ 10: string s :=" array ";
+ 11: 
+ 12: //&T+     // open
+ 13: /* this is a comment */
+ <KWinteger>
+ <id: a1>
+ <;>
+ 14: integer a1;
+ 15: 
+ 16: /*
+ 17: //&T-   // should not close
+ 18: */
+ 19: 
+ 20: ///////////&T-		// not pseudo comment
+ 21: 
+ 22: //$t-
+ 23: 
+ 24: // comment 
+ 25: 
+ 26: //&T-&T+   // close
+ 27: //12345
+ 28: 
+ 29: //&T+   // open
+ <KWinteger>
+ <id: x>
+ <;>
+ 30: integer x;
+ 31: // &T-  // comment
+-<KWinteger>
+-<id: x>
+-<;>
+ 32: integer x;
+ 33: 
+-<KWstring>
+-<:=>
+-<string:  //&T- >
+-<;>
+ 34: string:= " //&T- ";  // not close
+-<KWinteger>
+-<id: c>
+-<;>
+ 35: integer c;
+ 36: 
+ 37: //&T-&S-
+ 38: abc
+ 39: def
+ 40: //&T+
+ <id: bye>
+ 41: bye
+ <KWinteger>
+ 42: integer
+ 43: 
+ 44: /*hello*///&T-
+ 45: "hello"
+ 46: 
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/advanced/string_error2.p
+Test file: ./2010pattern/advanced/string_error3.p
+Test file: ./2010pattern/advanced/string_error.p
+Test file: ./2010pattern/advanced/string.p
+Test file: ./2010pattern/basic/delim.p
+Test file: ./2010pattern/basic/identifier.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:56:11.706473000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:56:11.703477000 +0800
+@@ -1,24 +1,24 @@
+ 1: // pattern name: identifier
+ 2: 
+-<integer: 0>
++<Integer: 0>
+ <id: aa>
+ 3: 0aa
+ <id: aa0>
+ 4: aa0
+ 5: 
+ <id: integerA>
+ 6: 	integerA
+ <id: integera>
+ 7:  integera
+ 8: 
+ <id: arraybegin>
+ 9: arraybegin
+ 10: 
+ <id: defdo>
+ <KWif>
+ 11: defdo if
+ 12: 
+ <id: intege>
+ <id: r>
+ 13: intege r
+ 14: 
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/basic/keyword.p
+Test file: ./2010pattern/basic/op.p
+Test file: ./2010pattern/digit/float_error1.p
+Test file: ./2010pattern/digit/float_error2.p
+Test file: ./2010pattern/digit/float_error3.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:56:11.744477000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:56:11.742473000 +0800
+@@ -1,4 +1,4 @@
+ 1: // pattern name: float_error3
+ 2: 
+-<integer: 0>
++<Integer: 0>
+ error at line 3: bad character "."
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/digit/float_error4.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:56:11.755477000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:56:11.752476000 +0800
+@@ -1,4 +1,4 @@
+ 1: // pattern name: float_error4
+ 2: 
+-<integer: 1203>
++<Integer: 1203>
+ error at line 3: bad character "."
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/digit/float.p
+Test file: ./2010pattern/digit/integer.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:56:11.774476000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:56:11.772474000 +0800
+@@ -1,31 +1,31 @@
+ 1: // pattern name: integer
+ 2: 
+-<integer: 123>
++<Integer: 123>
+ 3: 123
+-<integer: 456>
++<Integer: 456>
+ 4: 456
+-<integer: 789>
++<Integer: 789>
+ 5: 789
+ <oct_integer: 0123>
+ 6:  0123		// int:0 int:123
+ 7: 
+ <oct_integer: 00123>
+ 8: 00123               // int:0 int:0 int:123  
+ <oct_integer: 000123>
+ 9: 	000123
+ 10: 
+ <oct_integer: 010123>
+ 11: 010123
+ 12: 
+-<integer: 1230>
++<Integer: 1230>
+ 13: 1230
+ 14: 
+-<integer: 12300>
++<Integer: 12300>
+ 15:   	12300
+ 16: 
+-<integer: 1010101>
++<Integer: 1010101>
+ 17: 1010101
+ 18: 
+-<integer: 200005>
++<Integer: 200005>
+ 19: 200005
+ 20: 
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/digit/scientific_error2.p
+Test file: ./2010pattern/digit/scientific_error.p
+Test file: ./2010pattern/digit/scientific.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:56:11.799470000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:56:11.796473000 +0800
+@@ -1,39 +1,39 @@
+ 1: // pattern name: scientific
+ <oct_integer: 007>
+ 2: 007
+ 3: 
+ <scientific: 369E2>
+ 4: 369E2
+ 5: 
+ <scientific: 125e2>
+ 6: 125e2
+ 7: 
+ <scientific: 123E+4>
+ 8: 123E+4
+ 9: 
+ <scientific: 135E-6>
+ 10: 135E-6
+ 11: 
+ <scientific: 147E0>
+ 12: 147E0
+ 13: 
+ <scientific: 147e-1>
+ 14: 147e-1
+ 15: 
+ <scientific: 1.23E2>
+ 16: 1.23E2
+ 17: 
+ <scientific: 2.345E-1>
+ 18: 2.345E-1
+ 19: 
+ <scientific: 25.01E2>
+ 20: 25.01E2
+ 21: 
+ <scientific: 123E0>
+-<integer: 1>
++<Integer: 1>
+ 22: 123E01		// scientific: 123E0 ; int: 1
+ <scientific: 123e0>
+ <oct_integer: 00>
+ 23: 123e000		// scientific:1 23e0 ; int: 0 ; int: 0
+ <oct_integer: 00>
+ error at line 24: bad character "."
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/error_case/error2.p
+Test file: ./2010pattern/error_case/error3.p
+Test file: ./2010pattern/error_case/error4.p
+Test file: ./2010pattern/error_case/error5.p
+Test file: ./2010pattern/error_case/error.p
+Test file: ./2010pattern/general/general_1.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:56:11.845472000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:56:11.842478000 +0800
+@@ -1,63 +1,58 @@
+ 1: // pattern name: general_1
+ 2: //  print  hello  world
+ 3: 
+ <KWbegin>
+ 7: //&S+
+ <KWvar>
+ <id: a>
+ <:>
+ <KWinteger>
+ <;>
+ 8: 	var a : integer;
+ 9: 
+ 10: //&T-
+ 11: 	var b : real;
+ 12: 
+ 13: //&T+
+ <KWprint>
+ <string: hello  world>
+ <;>
+ 14:     print "hello  world";
+ 15: 
+ <id: a>
+ <:=>
+-<integer: 1>
++<Integer: 1>
+ <+>
+-<integer: 1>
++<Integer: 1>
+ <;>
+ 19: //&S+  
+ <id: b>
+ <:=>
+ <float: 1.23>
+ <;>
+ 20:     b := 1.23;
+ 21: 
+ <KWstring>
+ <:=>
+ <string:  //&T->
+ <;>
+ 22: string:= " //&T-";  //not close     
+ <KWif>
+ <id: a>
+ <>>
+ <oct_integer: 01>
+ <KWthen>
+ 23: 	if a > 01 then
+ 24: 
+ <id: b>
+ <:=>
+ <id: b>
+ <*>
+ <scientific: 1.23e-1>
+ <;>
+ 28: //&S+ 
+ <KWend>
+ <KWif>
+ 29: 	end if
+ 30: 
+-31: // &S-  //comment
+ <KWend>
+-32: end
+-33: 
+-34: ////////&S-     //not pseudo comment
+-35: 
+ 
+========Seperator==============
+ 
+Test file: ./2010pattern/general/general_2.p
+--- result_cancate_diff/answer_tmp	2018-03-31 13:56:11.855476000 +0800
++++ result_cancate_diff/student_tmp	2018-03-31 13:56:11.853471000 +0800
+@@ -1,62 +1,62 @@
+ 1: // pattern name: general_2
+ 2: 
+ 3: /*
+ 4:  *	A P language example
+ 5:  */
+ <id: general2>
+ <;>
+ 6: general2;
+ 7: 
+ <KWvar>
+ <id: a>
+ <:>
+ <KWinteger>
+ <;>
+ 8: var a: integer;		// global variable
+ 9: 
+ <id: foo>
+ <(>
+ <id: a>
+ <,>
+ <id: b>
+ <:>
+ <KWinteger>
+ <)>
+ <:>
+ <KWinteger>
+ <;>
+ 10: foo( a, b: integer ): integer;
+ <KWbegin>
+ 11: begin
+ <KWreturn>
+ <id: a>
+ <*>
+ <id: b>
+ <;>
+ 12: 	return a*b;
+ <KWend>
+ 13: end
+ <KWend>
+ <id: foo>
+ 14: end foo
+ 15: 
+ 16: // main block
+ <KWbegin>
+ 17: begin
+ 18: 
+ <KWprint>
+ <id: foo>
+ <(>
+-<integer: 2>
++<Integer: 2>
+ <,>
+-<integer: 3>
++<Integer: 3>
+ <)>
+ <;>
+ 19: 	print foo(2,3);
+ 20: 
+ <KWend>
+ 21: end
+ <KWend>
+ <id: general2>
+ 22: end general2
+ 23: 
+ 
+========Seperator==============
+ 

@@ -1,0 +1,11 @@
+1: //pattern name scientific_2
+2: 
+<scientific: 768e5>
+<id: e3>
+3: 768e5e3     //scientifi: 768e5 ; id: e3
+4: 
+<integer: 123>
+<id: e>
+<+>
+<id: abC>
+5: 123e+abC    //int: 123; id:e; op:+; id:abC
