@@ -1,0 +1,3 @@
+<Error> found in Line 20: type mismatch, LHS= integer, RHS= boolean
+<Error> found in Line 28: type mismatch, LHS= boolean, RHS= integer
+Error at Line 34: operand(s) between '*' are string type

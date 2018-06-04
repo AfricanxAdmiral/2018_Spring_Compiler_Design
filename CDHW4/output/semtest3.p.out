@@ -1,0 +1,13 @@
+<Error> found in Line 11: return type of a function cannot be array type
+<Error> found in Line 36: return array dimension mismatch
+<Error> found in Line 46: symbol 'fun' not found
+<Error> found in Line 46: error type in RHS of assignment
+<Error> found in Line 46: type mismatch, LHS= integer [5], RHS= 
+<Error> found in Line 47: parameter type mismatch
+<Error> found in Line 47: error type in RHS of assignment
+<Error> found in Line 47: type mismatch, LHS= integer [5], RHS= 
+<Error> found in Line 48: parameter type mismatch
+<Error> found in Line 48: error type in RHS of assignment
+<Error> found in Line 48: type mismatch, LHS= integer [5], RHS= 
+<Error> found in Line 49: type mismatch, LHS= integer [5], RHS= integer
+<Error> found in Line 52: type mismatch, LHS= integer [5][5], RHS= integer [5]

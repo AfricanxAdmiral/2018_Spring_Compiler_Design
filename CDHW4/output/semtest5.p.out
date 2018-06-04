@@ -1,0 +1,2 @@
+<Error> found in Line 22: type mismatch, LHS= boolean, RHS= integer
+<Error> found in Line 24: type mismatch, LHS= integer, RHS= real

@@ -1,0 +1,7 @@
+<Error> found in Line 35: constant 'a' cannot be assigned
+<Error> found in Line 39: too few arguments to function 'fun'
+<Error> found in Line 39: error type in RHS of assignment
+<Error> found in Line 40: parameter type mismatch
+<Error> found in Line 40: error type in RHS of assignment
+<Error> found in Line 41: type mismatch, LHS= boolean, RHS= void
+<Error> found in Line 42: type mismatch, LHS= boolean, RHS= integer
