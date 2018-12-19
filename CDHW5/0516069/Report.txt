@@ -1,0 +1,34 @@
+# NCTU-Compiler-s18_Project_5_CodeGenerate
+
+
+## Abilites
+- Parse token with a LALR(1) grammar to do syntax analyze.
+- Build symbol table while parsing the LALR(1) grammar.
+- Output source code with line number if Opt_S is on.
+- Output token if Opt_T is on.
+- Output symbol table as spec if Opt_D is on.
+- Print out the unacceptable token in the console and stop program.
+- Print redeclared ID in the console without stopping the program.
+- Print semantic error that disobey the rules in the spec.
+- Generate $filename.j for Jasmin to decode into java bytecode.
+
+
+## Platform
+- linux with flex, yacc and gcc compiler.
+- Worked in linux.cs.nctu.tw work-station.
+
+
+## How to run parser
+- tpye 'make' in directory with Makefile.
+  
+  `code...
+    ./0516069> make
+  `...
+
+- lex.l, parser.y should be in the same directory with Makefile.
+- read input file as an argument while executing ./parser.
+
+-------------------------------------------------------------------
+Signature  : 翁英傑
+Student_ID : 0516069
+-------------------------------------------------------------------
